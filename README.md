@@ -65,10 +65,10 @@ PRODUCTS {
 UUID id PK
 VARCHAR(100) name
 VARCHAR(200) description
--DECIMAL(10,2) price
--TIMESTAMP created_at
--VARCHAR image_url
--UUID category_id FK
+DECIMAL(10,2) price
+TIMESTAMP created_at
+VARCHAR image_url
+UUID category_id FK
 }
 ```
 #### Package Structure
