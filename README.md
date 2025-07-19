@@ -1,4 +1,4 @@
-# To-Do List with Authentication
+# Product catalog API
 ![Maven](https://img.shields.io/badge/Maven-C71A36?style=flat&logo=apachemaven&logoColor=white)
 ![Java](https://img.shields.io/badge/Java-ED8B00.svg?style=flat&logo=openjdk&logoColor=white)
 ![Spring](https://img.shields.io/badge/Spring-6DB33F?style=flat&logo=spring&logoColor=white)
@@ -7,16 +7,17 @@
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)
 ![Flyway](https://img.shields.io/badge/Flyway-CC0200?style=flat&logo=flyway&logoColor=white)
 ![MapStruct](https://img.shields.io/badge/MapStruct-E94E1B)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
+![MinIO](https://img.shields.io/badge/MinIO-C72E49?style=flat&logo=minio&logoColor=white)
 ![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=flat&logo=swagger&logoColor=black)
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
+![AWS SDK](https://img.shields.io/badge/AWS-SDK-FF9900)
+[![MIT License](https://img.shields.io/badge/License-MIT-green)](./LICENSE)
 ### Challenge
-A RESTful API for personal task management with JWT authentication, user roles, Swagger/OpenAPI documentation, and global exception handling.
+A product catalog API, which stores images in a MinIO docker using the AWS SDK for S3.
 #### Features
 - User authentication with login/password and JWT token generation
-- User and admin registration
-- Task CRUD with ownership control
-- Mark tasks as completed
-- Filter by completed / pending tasks
+- User and admin registration <br/>
+[ADD DETAILS HERE]
 - Global exception handling with standard response format
 - Full API documentation via Swagger
 - Role-based authorization (ADMIN and USER)
@@ -29,46 +30,52 @@ class User {
 -String password
 -String role
 }
-class Task {
+class Category {
 -UUID id
--String title
+-String name
 -String description
--LocalDate dueDate
--Boolean completed
--User user
 }
-User "1"--> "*" Task
+class Product {
+-UUID id
+-String name
+-String description
+-Double price
+-LocalDateTime createdAt
+-String imageUrl
+-Category category
+}
+Category "1"--> "*" Product
 ```
 #### Entity Relationship Diagram
 ``` mermaid
 erDiagram
-USERS ||--o{ TASKS : contain
 USERS {
 UUID id PK
 VARCHAR(30) username
 VARCHAR(200) password
 String role
 }
-TASKS {
+CATEGORIES ||--o{ PRODUCTS : contain
+CATEGORIES {
 UUID id PK
-VARCHAR(100) title
-VARCHAR(500) description
-Timestamp dueDate
-Boolean completed
-UUID user_id FK
+VARCHAR(100) name
+VARCHAR(200) description
+}
+PRODUCTS {
+UUID id PK
+VARCHAR(100) name
+VARCHAR(200) description
+-DECIMAL(10,2) price
+-TIMESTAMP created_at
+-VARCHAR image_url
+-UUID category_id FK
 }
 ```
 #### Package Structure
-├── controller<br/>
-├── domain<br/>
-├── exception<br/>
-├── infra<br/>
-├── repository<br/>
-└── service
+[ADD HERE]
 #### Authentication and Authorization
 - **Login** returns a JWT token valid for 2 hours
 - Protected endpoints require the token in `Authorization: Bearer <token>`
-- `ADMIN` users have additional permissions (e.g., registering other admins)
 #### Swagger Documentation
 Once the application is running, access:
 http://localhost:8080/docs
