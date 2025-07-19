@@ -65,7 +65,7 @@ PRODUCTS {
 UUID id PK
 VARCHAR(100) name
 VARCHAR(200) description
-DECIMAL(10,2) price
+DECIMAL price "DECIMAL(10,2)"
 TIMESTAMP created_at
 VARCHAR image_url
 UUID category_id FK
