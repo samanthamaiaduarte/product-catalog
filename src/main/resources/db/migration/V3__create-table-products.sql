@@ -8,5 +8,5 @@ CREATE TABLE IF NOT EXISTS products(
     created_at TIMESTAMP NOT NULL,
     image_url VARCHAR,
     category_id UUID NOT NULL,
-    FOREIGN KEY (category_id) REFERENCES categories(id)
+    CONSTRAINT fk_product_category FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE RESTRICT
 );
