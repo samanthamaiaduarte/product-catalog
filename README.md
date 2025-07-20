@@ -85,27 +85,25 @@ http://localhost:8080/docs
 ## Running the Project
 1. Clone the repository:
 ```bash
-git clone https://github.com/samanthamaiaduarte/todo-api.git
+git clone https://github.com/samanthamaiaduarte/product-catalog.git
 ```
-2. Create a PostgreSQL database (e.g., `todoapi`)
-3. Configure your database settings in `application.properties`:
-```properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/your_db_name
-spring.datasource.username=your_db_user
-spring.datasource.password=your_db_password
-```
-4. Run the application
+2. Open the terminal at the root of the project
+3. Run the docker-compose to start the application
 ```bash
-./mvnw spring-boot:run
+docker-compose up --build
 ```
-The API will be available at http://localhost:8080
+
+User your browser to access:
+- API: http://localhost:8080
+- MinIO: http://localhost:9001 (admin / password123)
+- Swagger: http://localhost:8080/swagger-ui.html
 ## Deployment
 You can deploy this project on:
 - Render.com
 - Railway
 - Fly.io
-- Heroku (using JDK 21 buildpack)
-  ⚠️ Be sure to configure environment variables like the token secret and database credentials on the platform's settings.
+- Heroku (using JDK 21 buildpack)<br/><br/>
+⚠️ Be sure to configure environment variables like the token secret and database credentials on the platform's settings.
 ## Contributing
 Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request to the repository.
 When contributing to this project, please follow the existing code style, [commit conventions](https://www.conventionalcommits.org/en/v1.0.0/), and submit your changes in a separate branch.
